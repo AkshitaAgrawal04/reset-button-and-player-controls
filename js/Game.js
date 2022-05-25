@@ -154,5 +154,27 @@ class Game {
       player.positionY += 10;
       player.update();
     }
+
+    if (keyIsDown(LEFT_ARROW) && player.positionX >width/3- 50){
+      player.positionX -=5;
+      player.update();
+    }
+
+    if (keyIsDown(RIGHT_ARROW ) && player.positionX <width/3+ 300){
+      player.positionX +=5;
+      player.update();
+    }
+  }
+
+  handleResetButton(){
+    this.resetButton.mousePressed(()=>{
+      database.ref("/").set({
+        playerCount:0,
+        gameState:0,
+        players: {}
+      })
+
+      window.location.reload()
+    })
   }
 }
